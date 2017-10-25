@@ -1,0 +1,78 @@
+[v-cloak] {
+    display: none;
+}
+*{
+    margin:0;
+    padding:0;
+}
+body{
+    font-family:Microsoft YaHei;
+}
+
+#main{
+    box-sizing: border-box;
+    width: 380px;
+    padding: 20px 30px;
+    margin: 0 auto;
+}
+.search{
+    box-sizing: border-box;
+    position: relative;
+    width: 100%;
+}
+.search input{
+
+    padding-left: 30px;
+    height: 30px;
+    width: 85%;
+    border:10px solid lightblue;
+    outline: none;
+}
+.search img{
+    width: 15px;
+    position: absolute;
+    left: 16px;
+    top: 18px;
+}
+
+li{
+    list-style:none;
+}
+
+.list{
+    width: 100%;
+    margin: 0 auto;
+    text-align: left;
+}
+
+.list li{
+    border-bottom: 1px solid #ddd;
+    padding: 10px;
+    overflow: hidden;
+}
+.list li a{
+    display: inline-block;
+    float: left;
+    width: 80px;
+    height: 80px;
+    /*box-sizing: border-box;*/
+
+}
+
+.list li img{
+    width:100%;
+    height: 100%;
+    float:left;
+    /*border:none;*/
+    object-fit:cover;
+}
+
+.list li p{
+    padding-left: 20px;
+    font-size: 13px ;
+    width: 200px;
+    float: left;
+    /*margin-left: 90px;*/
+    font-weight: bold;
+    color:#6e7a7f;
+}

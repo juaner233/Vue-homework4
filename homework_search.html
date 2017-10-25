@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="node_modules/vue/dist/vue.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div id="main" v-cloak>
+    <div class="search">
+        <img src="搜索.png">
+        <input v-model="searchStr" class="write" type="text" palceholder="搜索">
+    </div>
+    <ul class="list">
+        <li v-for="a in searchFor(articles,searchStr)">
+            <a :href="a.url" target="_blank"><img :src="a.image"/></a>
+            <p>{{a.title}}</p>
+        </li>
+    </ul>
+</div>
+<script>
+    var demo = new Vue({
+        el: '#main',
+        data: {
+            searchStr: "",
+            simg: '搜索.png',
+            layout: 'grid',
+            articles: [{
+                "title": "What You Need To Know About CSS Variables",
+                "url": "http://tutorialzine.com/2016/03/what-you-need-to-know-about-css-variables/",
+                "image": 'https://tutorialzine.com/media/2016/03/css-variables.jpg'
+            },
+                {
+                    "title": "Freebie: 4 Great Looking Pricing Tables",
+                    "url": "http://tutorialzine.com/2016/02/freebie-4-great-looking-pricing-tables/",
+                    "image": 'https://tutorialzine.com/media/2016/02/great-looking-pricing-tables.jpg'
+                },
+                {
+                    "title": "20 Interesting JavaScript and CSS Libraries for February 2016",
+                    "url": "http://tutorialzine.com/2016/02/20-interesting-javascript-and-css-libraries-for-february-2016/",
+                    "image": 'https://tutorialzine.com/media/2016/02/interesting-resources-february.jpg'
+                },
+                {
+                    "title": "Quick Tip: The Easiest Way To Make Responsive Headers",
+                    "url": "http://tutorialzine.com/2016/02/quick-tip-easiest-way-to-make-responsive-headers/",
+                    "image": 'https://tutorialzine.com/media/2016/02/quick-tip-responsive-headers.png'
+                },
+                {
+                    "title": "Learn SQL In 20 Minutes",
+                    "url": "http://tutorialzine.com/2016/01/learn-sql-in-20-minutes/",
+                    "image": 'https://tutorialzine.com/media/2016/01/learn-sql-20-minutes.png'
+                },
+                {
+                    "title": "Creating Your First Desktop App With HTML, JS and Electron",
+                    "url": "http://tutorialzine.com/2015/12/creating-your-first-desktop-app-with-html-js-and-electron/",
+                    "image": 'https://tutorialzine.com/media/2015/12/creating-your-first-desktop-app-with-electron.png'
+                }]
+
+        },
+        methods: {
+            //value为articles数组 searchStr为搜索的内容
+            searchFor: function (value, searchStr) {
+
+                //用result来存放查到的结果
+                var result = [];
+
+                //未输入时什么都不显示
+                if (!searchStr) {
+                    return "";
+                }
+
+                //把查询的内容转为小写的
+                searchStr = searchStr.trim().toLowerCase();
+
+                result = value.filter(function (item) {
+//                    输入的关键字跟title匹配
+                    if (item.title.toLowerCase().indexOf(searchStr) != -1) {
+                        //匹配时
+
+                        return item;
+                    }
+                });
+
+                return result;
+            }
+        }
+    });
+</script>
+</body>
+</html>
